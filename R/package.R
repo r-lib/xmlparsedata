@@ -75,7 +75,9 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   pd$token <- map_token(pd$token)
 
   ## Positions, to make it easy to compare what comes first
-  pd$pos <- order(pd$line1, pd$col1, -pd$line2, -pd$col2, pd$terminal)
+  maxcol <- max(pd$col1, pd$col2) + 1L
+  pd$start <- pd$line1   * maxcol + pd$col1
+  pd$end   <- pd$line2   * maxcol + pd$col2
 
   pd$tag <- paste0(
     "<", pd$token,
@@ -83,7 +85,8 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
     "\" col1=\"", pd$col1,
     "\" line2=\"", pd$line2,
     "\" col2=\"", pd$col2,
-    "\" pos=\"", pd$pos,
+    "\" start=\"", pd$start,
+    "\" end=\"", pd$end,
     "\">",
     xml_encode(pd$text),
     ifelse(pd$terminal, paste0("</", pd$token, ">"), "")
