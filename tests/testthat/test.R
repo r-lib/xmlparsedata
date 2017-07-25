@@ -91,3 +91,16 @@ test_that("data frame input", {
 
   expect_equal(x1, x2)
 })
+
+
+
+test_that("Control-C character", {
+  src <- "# Control-C \003
+          # Bell  \007
+          # Escape \027
+          "
+  xml <- xml_parse_data(parse(text = src, keep.source = TRUE))
+  x <- xml2::read_xml(xml)
+  expect_is(x, "xml_document")
+})
+
