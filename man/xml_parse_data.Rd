@@ -42,7 +42,7 @@ has attributes that define the location: \code{line1}, \code{col1},
 data frame column names.
 
 See an example below. See also the README at
-\url{https://github.com/MangoTheCat/xmlparsedata#readme}
+\url{https://github.com/r-lib/xmlparsedata#readme}
 for examples on how to search the XML tree with the \code{xml2} package
 and XPath expressions.
 }
@@ -57,7 +57,7 @@ cat(xml_parse_data(expr, pretty = TRUE))
 }
 \seealso{
 \code{\link{xml_parse_token_map}} for the token names.
-\url{https://github.com/MangoTheCat/xmlparsedata#readme} for more
+\url{https://github.com/r-lib/xmlparsedata#readme} for more
 information and use cases.
 }
 
