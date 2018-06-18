@@ -1,0 +1,3 @@
+# CODEOWNERS for xmlparsedata
+# https://www.tidyverse.org/development/understudies
+* @gaborcsardi @jimhester
