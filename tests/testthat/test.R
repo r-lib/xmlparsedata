@@ -42,7 +42,7 @@ test_that("non-trivial input", {
 
 test_that("UTF-8 is OK", {
 
-  src <- "# comment with éápő"
+  src <- enc2native("# comment with éápő")
   xml <- xml_parse_data(parse(text = src, keep.source = TRUE))
   x <- xml2::read_xml(xml)
 
@@ -55,7 +55,7 @@ test_that("UTF-8 is OK", {
     src
   )
 
-  src <- "# 現行の学校文法では、英語にあるような「目的語」「補語」"
+  src <- enc2native("# 現行の学校文法では、英語にあるような「目的語」「補語」")
   xml <- xml_parse_data(parse(text = src, keep.source = TRUE))
   x <- xml2::read_xml(xml)
 
@@ -68,12 +68,13 @@ test_that("UTF-8 is OK", {
     iconv(src, to = "UTF-8")
   )
 
-  src <- "`%ééé%` <- function(l, r) l + r"
+  src <- enc2native("`%ééé%` <- function(l, r) l + r")
   xml <- xml_parse_data(parse(text = src, keep.source = TRUE), pretty = TRUE)
 
   op <- xml2::xml_find_all(
     xml2::read_xml(xml),
-    iconv("/exprlist/expr/expr/SYMBOL[text()='`%ééé%`']", to = "UTF-8")
+    iconv(enc2native("/exprlist/expr/expr/SYMBOL[text()='`%ééé%`']"),
+          to = "UTF-8")
   )
   expect_equal(length(op), 1)
 })

@@ -70,6 +70,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   if (!nrow(pd)) return(paste0(xml_header, xml_footer))
 
   pd <- fix_comments(pd)
+  pd$text <-  enc2utf8(pd$text)
 
   ## Tags for all nodes, teminal nodes have end tags as well
   pd$token <- map_token(pd$token)

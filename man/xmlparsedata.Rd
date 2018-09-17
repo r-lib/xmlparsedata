@@ -9,4 +9,3 @@
 Convert the output of 'utils::getParseData()' to an 'XML' tree, that is
 searchable and easier to manipulate in general.
 }
-

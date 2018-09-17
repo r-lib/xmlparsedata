@@ -60,4 +60,3 @@ cat(xml_parse_data(expr, pretty = TRUE))
 \url{https://github.com/r-lib/xmlparsedata#readme} for more
 information and use cases.
 }
-
