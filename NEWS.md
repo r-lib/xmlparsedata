@@ -1,6 +1,11 @@
 
 # devel
 
+* Ensure that closing xml-tags for code expressions that end at the same
+  position in a file respect start-first-end-last ordering in the produced xml.
+  Ensures that the new `equal_assign` token in `getParseData()` for R-3.6 is
+  handled appropriately. #5 @russHyde
+
 # 1.0.2
 
 * Remove control characters `\003`, `\007`, `\010`, `\027`, as they are
