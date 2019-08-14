@@ -110,7 +110,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   ## - the terminal nodes from pd2 may be nested inside each other, when
   ##   this happens they will have the same line1, col1, line2, col2 and
   ##   terminal status; and 'start' is used to break ties
-  ord <- with(pd, order(line1, col1, -line2, -col2, terminal, -start))
+  ord <- order(pd$line1, pd$col1, -pd$line2, -pd$col2, pd$terminal, -pd$start)
   pd <- pd[ord, ]
 
   if (pretty) {
