@@ -1,5 +1,5 @@
 
-# devel
+# 1.0.3
 
 * Ensure that closing xml-tags for code expressions that end at the same
   position in a file respect start-first-end-last ordering in the produced xml.
