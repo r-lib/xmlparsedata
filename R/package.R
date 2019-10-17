@@ -54,7 +54,7 @@ NULL
 xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
 
   xml_header <- paste0(
-    "<?xml version=\"1.0\" encoding=\"UTF-8\"",
+    "<?xml version=\"1.0\" encoding=\"UTF-8\" ",
     "standalone=\"yes\" ?>\n<exprlist>\n"
   )
   xml_footer <- "\n</exprlist>\n"
