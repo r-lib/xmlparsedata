@@ -67,7 +67,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
     pd <- getParseData(x, includeText = includeText)
   }
 
-  if (!nrow(pd)) return(paste0(xml_header, xml_footer))
+  if (is.null(pd) || !nrow(pd)) return(paste0(xml_header, xml_footer))
 
   pd <- fix_comments(pd)
   pd$text <-  enc2utf8(pd$text)
