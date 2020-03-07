@@ -29,7 +29,7 @@ searchable and easier to manipulate in general.
 
 
 ```r
-source("https://install-github.me/r-lib/xmlparsedata")
+install.packages("xmlparsedata")
 ```
 
 ## Usage
