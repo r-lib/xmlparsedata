@@ -164,7 +164,7 @@ xml_parse_token_map <- c(
   "'}'" = "OP-RIGHT-BRACE",
   "')'" = "OP-RIGHT-PAREN",
   "'!'" = "OP-EXCLAMATION",
-  "']'" = "OP-RIGHT-BRACE",
+  "']'" = "OP-RIGHT-BRACKET",
   "','" = "OP-COMMA"
 )
 
