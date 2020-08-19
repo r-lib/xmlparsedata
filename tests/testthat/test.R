@@ -118,3 +118,15 @@ test_that("equal_assign is handled on R 3.6", {
   expect_silent(x <- xml2::read_xml(xml))
 })
 
+test_that("includeText=FALSE works", {
+  # getParseData(..., includeText = FALSE) returns a data.frame
+  # without `text` column. xml_parse_data should handle this case
+  # correctly and the resulting xml text should not contain text
+  # elements.
+  xml <- xml_parse_data(parse(text = "x <- 1", keep.source = TRUE),
+    includeText = FALSE)
+  expect_true(is.character(xml))
+  expect_true(length(xml) == 1)
+  expect_silent(x <- xml2::read_xml(xml))
+  expect_true(xml2::xml_text(x) == "")
+})

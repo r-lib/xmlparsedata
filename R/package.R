@@ -70,7 +70,10 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   if (!nrow(pd)) return(paste0(xml_header, xml_footer))
 
   pd <- fix_comments(pd)
-  pd$text <-  enc2utf8(pd$text)
+
+  if (!is.null(pd$text)) {
+    pd$text <- enc2utf8(pd$text)
+  }
 
   ## Tags for all nodes, teminal nodes have end tags as well
   pd$token <- map_token(pd$token)
@@ -89,7 +92,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
     "\" start=\"", pd$start,
     "\" end=\"", pd$end,
     "\">",
-    xml_encode(pd$text),
+    if (!is.null(pd$text)) xml_encode(pd$text) else "",
     ifelse(pd$terminal, paste0("</", pd$token, ">"), "")
   )
 
