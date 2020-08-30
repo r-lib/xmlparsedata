@@ -1,9 +1,11 @@
 
 # 1.0.4
 
-* Translate ] tokens to `OP-RIGHT-BRACKET` instead of `OP-RIGHT-BRACE`. #11 @AshesITR
+* Translate ] tokens to `OP-RIGHT-BRACKET` instead of
+  `OP-RIGHT-BRACE` (#11 @AshesITR).
 
-* Fix `includeText=FALSE`. #14 @renkun-ken
+* `xml_parse_data()` now works if `includeText = FALSE`
+  (#14 @renkun-ken).
 
 # 1.0.3
 
