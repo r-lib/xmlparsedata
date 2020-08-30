@@ -1,6 +1,6 @@
 Package: xmlparsedata
 Title: Parse Data of 'R' Code as an 'XML' Tree
-Version: 1.0.3
+Version: 1.0.4
 Author: Gábor Csárdi
 Maintainer: Gábor Csárdi <csardi.gabor@gmail.com>
 Description: Convert the output of 'utils::getParseData()' to an 'XML'
