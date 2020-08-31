@@ -7,8 +7,8 @@
 
 [![Linux Build Status](https://travis-ci.org/r-lib/xmlparsedata.svg?branch=master)](https://travis-ci.org/r-lib/xmlparsedata)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/github/r-lib/xmlparsedata?svg=true)](https://ci.appveyor.com/project/gaborcsardi/xmlparsedata)
-[![](http://www.r-pkg.org/badges/version/xmlparsedata)](http://www.r-pkg.org/pkg/xmlparsedata)
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/xmlparsedata)](http://www.r-pkg.org/pkg/xmlparsedata)
+[![](https://www.r-pkg.org/badges/version/xmlparsedata)](https://www.r-pkg.org/pkg/xmlparsedata)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/xmlparsedata)](https://www.r-pkg.org/pkg/xmlparsedata)
 [![Coverage Status](https://img.shields.io/codecov/c/github/r-lib/xmlparsedata/master.svg)](https://codecov.io/github/r-lib/xmlparsedata?branch=master)
 
 Convert the output of 'utils::getParseData()' to an 'XML' tree, that is
