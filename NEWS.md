@@ -1,6 +1,8 @@
 
 # 1.0.4.9000
 
+* Translate `\` in lambda expression to `OP-LAMBDA`. (#18 @renkun-ken)
+
 # 1.0.4
 
 * Translate ] tokens to `OP-RIGHT-BRACKET` instead of
