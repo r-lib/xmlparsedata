@@ -168,7 +168,8 @@ xml_parse_token_map <- c(
   "')'" = "OP-RIGHT-PAREN",
   "'!'" = "OP-EXCLAMATION",
   "']'" = "OP-RIGHT-BRACKET",
-  "','" = "OP-COMMA"
+  "','" = "OP-COMMA",
+  "'\\\\'" = "OP-LAMBDA"
 )
 
 xml_encode <- function(x) {

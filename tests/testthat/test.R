@@ -130,3 +130,13 @@ test_that("includeText=FALSE works", {
   expect_silent(x <- xml2::read_xml(xml))
   expect_true(xml2::xml_text(x) == "")
 })
+
+test_that("lambda operator works", {
+  testthat::skip_if_not(getRversion() >= "4.1.0" && as.numeric(R.version[["svn rev"]]) >= 79553)
+  # r-devel rev 79553 introduces native pipe syntax (|>) and lambda expression (e.g \(x) x + 1).
+  xml <- xml_parse_data(parse(text = "\\(x) x + 1"))
+  expect_true(is.character(xml))
+  expect_true(length(xml) == 1)
+  expect_silent(x <- xml2::read_xml(xml))
+  expect_true(length(xml2::xml_find_all(x, "//OP-LAMBDA")) == 1)
+})

@@ -5,7 +5,7 @@
 \alias{xml_parse_token_map}
 \title{Map token names of the R parser to token names in
 \code{\link{xml_parse_data}}}
-\format{An object of class \code{character} of length 19.}
+\format{An object of class \code{character} of length 20.}
 \usage{
 xml_parse_token_map
 }
