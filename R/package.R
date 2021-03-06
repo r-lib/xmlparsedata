@@ -32,6 +32,10 @@ NULL
 #' for examples on how to search the XML tree with the \code{xml2} package
 #' and XPath expressions.
 #'
+#' Note that `xml_parse_data()` silently drops all control characters
+#' (0x01-0x1f) from the input, except horizontal tab (0x09) and newline
+#' (0x0a), because they are invalid in XML 1.0.
+#'
 #' @param pretty Whether to pretty-indent the XML output. It has a small
 #'   overhead which probably only matters for very large source files.
 #' @inheritParams utils::getParseData

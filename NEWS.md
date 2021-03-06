@@ -3,7 +3,7 @@
 
 * Translate `\` in lambda expression to `OP-LAMBDA`. (#18 @renkun-ken)
 
-* Drop all control characters, except horizaontal tab and newline (#19).
+* Drop all control characters, except horizontal tab and newline (#19).
 
 # 1.0.4
 

@@ -45,6 +45,10 @@ See an example below. See also the README at
 \url{https://github.com/r-lib/xmlparsedata#readme}
 for examples on how to search the XML tree with the \code{xml2} package
 and XPath expressions.
+
+Note that `xml_parse_data()` silently drops all control characters
+(0x01-0x1f) from the input, except horizontal tab (0x09) and newline
+(0x0a), because they are invalid in XML 1.0.
 }
 \examples{
 code <- "function(a = 1, b = 2) {\\n  a + b\\n}\\n"
