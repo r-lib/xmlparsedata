@@ -98,6 +98,8 @@ test_that("Control-C character", {
   src <- "# Control-C \003
           # Bell  \007
           # Escape \027
+          # Form feed \f
+          # Vertical tab \t
           "
   xml <- xml_parse_data(parse(text = src, keep.source = TRUE))
   x <- xml2::read_xml(xml)
