@@ -1,7 +1,7 @@
 
 # 1.0.4.9000
 
-* Translate `\` in lambda expression to `OP-LAMBDA`. (#18 @renkun-ken)
+* Translate `\` in lambda expression to `OP-LAMBDA` (#18 @renkun-ken).
 
 * Drop all control characters, except horizontal tab and newline (#19).
 
