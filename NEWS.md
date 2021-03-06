@@ -1,5 +1,5 @@
 
-# 1.0.4.9000
+# 1.0.5
 
 * Translate `\` in lambda expression to `OP-LAMBDA` (#18 @renkun-ken).
 
