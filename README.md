@@ -11,7 +11,7 @@ status](https://github.com/r-lib/xmlparsedata/workflows/R-CMD-check/badge.svg)](
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/xmlparsedata)](https://www.r-pkg.org/pkg/xmlparsedata)
 [![Coverage
-Status](https://img.shields.io/codecov/c/github/r-lib/xmlparsedata/master.svg)](https://codecov.io/github/r-lib/xmlparsedata?branch=master)
+Status](https://img.shields.io/codecov/c/github/r-lib/xmlparsedata/main.svg)](https://codecov.io/github/r-lib/xmlparsedata?branch=main)
 <!-- badges: end -->
 
 Convert the output of ‘utils::getParseData()’ to an ‘XML’ tree, that is
