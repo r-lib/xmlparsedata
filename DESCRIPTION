@@ -8,7 +8,8 @@ Description: Convert the output of 'utils::getParseData()' to an 'XML'
     general.
 License: MIT + file LICENSE
 LazyData: true
-URL: https://github.com/r-lib/xmlparsedata#readme
+URL: https://github.com/r-lib/xmlparsedata#readme,
+    https://r-lib.github.io/xmlparsedata/
 BugReports: https://github.com/r-lib/xmlparsedata/issues
 RoxygenNote: 7.1.2
 Suggests:
@@ -18,3 +19,4 @@ Suggests:
 Depends: R (>= 3.0.0)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
+Config/Needs/website: tidyverse/tidytemplate

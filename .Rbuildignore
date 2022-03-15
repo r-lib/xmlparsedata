@@ -7,3 +7,6 @@
 ^appveyor.yml$
 ^\.github$
 ^revdep$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
