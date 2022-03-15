@@ -15,10 +15,10 @@ knitr::opts_chunk$set(
 > Parse Data of R Code as an 'XML' Tree
 
 <!-- badges: start -->
-[![R build status](https://github.com/r-lib/xmlparsedata/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/xmlparsedata/actions)
+[![R-CMD-check](https://github.com/r-lib/xmlparsedata/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/xmlparsedata/actions/workflows/R-CMD-check.yaml)
 [![](https://www.r-pkg.org/badges/version/xmlparsedata)](https://www.r-pkg.org/pkg/xmlparsedata)
 [![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/xmlparsedata)](https://www.r-pkg.org/pkg/xmlparsedata)
-[![Coverage Status](https://img.shields.io/codecov/c/github/r-lib/xmlparsedata/main.svg)](https://codecov.io/github/r-lib/xmlparsedata?branch=main)
+[![Codecov test coverage](https://codecov.io/gh/r-lib/xmlparsedata/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/xmlparsedata?branch=main)
 <!-- badges: end -->
 
 Convert the output of 'utils::getParseData()' to an 'XML' tree, that is
@@ -178,6 +178,12 @@ There is only one hit, in line 334:
 cbind(332:336, src[332:336])
 ```
 
+## Code of Conduct
+
+Please note that the xmlparsedata project is released with a
+[Contributor Code of Conduct](https://r-lib.github.io/xmlparsedata/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
 ## License
 
-MIT © Mango Solutions
+MIT © Mango Solutions, RStudio

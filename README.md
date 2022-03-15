@@ -5,29 +5,28 @@
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/r-lib/xmlparsedata/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/xmlparsedata/actions)
+[![R-CMD-check](https://github.com/r-lib/xmlparsedata/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/xmlparsedata/actions/workflows/R-CMD-check.yaml)
 [![](https://www.r-pkg.org/badges/version/xmlparsedata)](https://www.r-pkg.org/pkg/xmlparsedata)
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/xmlparsedata)](https://www.r-pkg.org/pkg/xmlparsedata)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/r-lib/xmlparsedata/main.svg)](https://codecov.io/github/r-lib/xmlparsedata?branch=main)
+[![Codecov test
+coverage](https://codecov.io/gh/r-lib/xmlparsedata/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/xmlparsedata?branch=main)
 <!-- badges: end -->
 
 Convert the output of ‘utils::getParseData()’ to an ‘XML’ tree, that is
 searchable and easier to manipulate in general.
 
------
+------------------------------------------------------------------------
 
-  - [Installation](#installation)
-  - [Usage](#usage)
-      - [Introduction](#introduction)
-      - [`utils::getParseData()`](#utilsgetparsedata)
-      - [`xml_parse_data()`](#xml_parse_data)
-      - [Renaming some tokens](#renaming-some-tokens)
-      - [Search the parse tree with
+-   [Installation](#installation)
+-   [Usage](#usage)
+    -   [Introduction](#introduction)
+    -   [`utils::getParseData()`](#utilsgetparsedata)
+    -   [`xml_parse_data()`](#xml_parse_data)
+    -   [Renaming some tokens](#renaming-some-tokens)
+    -   [Search the parse tree with
         `xml2`](#search-the-parse-tree-with-xml2)
-  - [License](#license)
+-   [License](#license)
 
 ## Installation
 
@@ -265,6 +264,13 @@ cbind(332:336, src[332:336])
     #> [4,] "335" "\t    if (is.na(x[i, 2L])) cols <- c(1L, 3:5)"
     #> [5,] "336" "\t    else cols <- 1:5"
 
+## Code of Conduct
+
+Please note that the xmlparsedata project is released with a
+[Contributor Code of
+Conduct](https://r-lib.github.io/xmlparsedata/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.
+
 ## License
 
-MIT © Mango Solutions
+MIT © Mango Solutions, RStudio
