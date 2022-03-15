@@ -13,23 +13,23 @@ NULL
 #' In recent R versions the parser can attach source code location
 #' information to the parsed expressions. This information is often
 #' useful for static analysis, e.g. code linting. It can be accessed
-#' via the \code{\link[utils]{getParseData}} function.
+#' via the [utils::getParseData()] function.
 #'
-#' \code{xml_parse_data} converts this information to an XML tree.
+#' `xml_parse_data` converts this information to an XML tree.
 #' The R parser's token names are preserved in the XML as much as
 #' possible, but some of them are not valid XML tag names, so they are
-#' renamed, see the \code{\link{xml_parse_token_map}} vector for the
+#' renamed, see the [xml_parse_token_map()] vector for the
 #' mapping.
 #'
-#' The top XML tag is \code{<exprlist>}, which is a list of
-#' expressions, each expression is an \code{<expr>} tag. Each tag
-#' has attributes that define the location: \code{line1}, \code{col1},
-#' \code{line2}, \code{col2}. These are from the \code{\link{getParseData}}
+#' The top XML tag is `<exprlist>`, which is a list of
+#' expressions, each expression is an `<expr>` tag. Each tag
+#' has attributes that define the location: `line1`, `col1`,
+#' `line2`, `col2`. These are from the [getParseData()]
 #' data frame column names.
 #'
 #' See an example below. See also the README at
-#' \url{https://github.com/r-lib/xmlparsedata#readme}
-#' for examples on how to search the XML tree with the \code{xml2} package
+#' <https://github.com/r-lib/xmlparsedata#readme>
+#' for examples on how to search the XML tree with the `xml2` package
 #' and XPath expressions.
 #'
 #' Note that `xml_parse_data()` silently drops all control characters
@@ -43,8 +43,8 @@ NULL
 #'
 #' @export
 #' @importFrom utils getParseData
-#' @seealso \code{\link{xml_parse_token_map}} for the token names.
-#' \url{https://github.com/r-lib/xmlparsedata#readme} for more
+#' @seealso [xml_parse_token_map()] for the token names.
+#' <https://github.com/r-lib/xmlparsedata#readme> for more
 #' information and use cases.
 #' @examples
 #' code <- "function(a = 1, b = 2) {\n  a + b\n}\n"
@@ -144,14 +144,14 @@ map_token <- function(token) {
 }
 
 #' Map token names of the R parser to token names in
-#' \code{\link{xml_parse_data}}
+#' [xml_parse_data()]
 #'
 #' Some of the R token names are not valid XML tag names,
-#' so \code{\link{xml_parse_data}} needs to replace them to create a
+#' so [xml_parse_data()] needs to replace them to create a
 #' valid XML file.
 #'
 #' @export
-#' @seealso \code{\link{xml_parse_data}}
+#' @seealso [xml_parse_data()]
 
 xml_parse_token_map <- c(
   "'?'" = "OP-QUESTION",
