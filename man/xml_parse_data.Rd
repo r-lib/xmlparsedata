@@ -29,10 +29,10 @@ useful for static analysis, e.g. code linting. It can be accessed
 via the \code{\link[utils:getParseData]{utils::getParseData()}} function.
 }
 \details{
-\code{xml_parse_data} converts this information to an XML tree.
+\code{xml_parse_data()} converts this information to an XML tree.
 The R parser's token names are preserved in the XML as much as
 possible, but some of them are not valid XML tag names, so they are
-renamed, see the \code{\link[=xml_parse_token_map]{xml_parse_token_map()}} vector for the
+renamed, see the \link{xml_parse_token_map} vector for the
 mapping.
 
 The top XML tag is \verb{<exprlist>}, which is a list of
@@ -60,7 +60,7 @@ getParseData(expr)
 cat(xml_parse_data(expr, pretty = TRUE))
 }
 \seealso{
-\code{\link[=xml_parse_token_map]{xml_parse_token_map()}} for the token names.
+\link{xml_parse_token_map} for the token names.
 \url{https://github.com/r-lib/xmlparsedata#readme} for more
 information and use cases.
 }
