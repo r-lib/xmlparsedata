@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/404.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/reference/xml_parse_data.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/reference/xml_parse_token_map.html</loc>
+  </url>
+  <url>
+    <loc>https://r-lib.github.io/xmlparsedata/reference/xmlparsedata.html</loc>
+  </url>
+</urlset>
