@@ -4,17 +4,19 @@
 \name{xml_parse_token_map}
 \alias{xml_parse_token_map}
 \title{Map token names of the R parser to token names in
-\code{\link{xml_parse_data}}}
-\format{An object of class \code{character} of length 20.}
+\code{\link[=xml_parse_data]{xml_parse_data()}}}
+\format{
+An object of class \code{character} of length 20.
+}
 \usage{
 xml_parse_token_map
 }
 \description{
 Some of the R token names are not valid XML tag names,
-so \code{\link{xml_parse_data}} needs to replace them to create a
+so \code{\link[=xml_parse_data]{xml_parse_data()}} needs to replace them to create a
 valid XML file.
 }
 \seealso{
-\code{\link{xml_parse_data}}
+\code{\link[=xml_parse_data]{xml_parse_data()}}
 }
 \keyword{datasets}
