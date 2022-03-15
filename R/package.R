@@ -54,9 +54,7 @@ NULL
 #' getParseData(expr)
 #'
 #' cat(xml_parse_data(expr, pretty = TRUE))
-
 xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
-
   xml_header <- paste0(
     "<?xml version=\"1.0\" encoding=\"UTF-8\" ",
     "standalone=\"yes\" ?>\n<exprlist>\n"
@@ -66,12 +64,13 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   ## Maybe it is already a data frame, e.g. when used in lintr
   if (is.data.frame(x)) {
     pd <- x
-
   } else {
     pd <- getParseData(x, includeText = includeText)
   }
 
-  if (!nrow(pd)) return(paste0(xml_header, xml_footer))
+  if (!nrow(pd)) {
+    return(paste0(xml_header, xml_footer))
+  }
 
   pd <- fix_comments(pd)
 
@@ -84,8 +83,8 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
 
   ## Positions, to make it easy to compare what comes first
   maxcol <- max(pd$col1, pd$col2) + 1L
-  pd$start <- pd$line1   * maxcol + pd$col1
-  pd$end   <- pd$line2   * maxcol + pd$col2
+  pd$start <- pd$line1 * maxcol + pd$col1
+  pd$end <- pd$line2 * maxcol + pd$col2
 
   pd$tag <- paste0(
     "<", pd$token,
@@ -101,7 +100,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   )
 
   ## Add an extra terminal tag for each non-terminal one
-  pd2 <- pd[! pd$terminal, ]
+  pd2 <- pd[!pd$terminal, ]
   if (nrow(pd2)) {
     pd2$terminal <- TRUE
     pd2$parent <- -1
@@ -121,11 +120,10 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   pd <- pd[ord, ]
 
   if (pretty) {
-    str <- ! pd$terminal
+    str <- !pd$terminal
     end <- pd$parent == -1
     ind <- 2L + cumsum(str * 2L + end * (-2L)) - str * 2L
     xml <- paste0(spaces(ind), pd$tag, collapse = "\n")
-
   } else {
     xml <- paste(pd$tag, collapse = "\n")
   }
@@ -134,7 +132,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
 }
 
 fix_comments <- function(pd) {
-  pd$parent[ pd$parent < 0 ] <- 0
+  pd$parent[pd$parent < 0] <- 0
   pd
 }
 

@@ -41,7 +41,6 @@ test_that("non-trivial input", {
 })
 
 test_that("UTF-8 is OK", {
-
   src <- enc2native("# comment with éápő")
   xml <- xml_parse_data(parse(text = src, keep.source = TRUE))
   x <- xml2::read_xml(xml)
@@ -74,13 +73,13 @@ test_that("UTF-8 is OK", {
   op <- xml2::xml_find_all(
     xml2::read_xml(xml),
     iconv(enc2native("/exprlist/expr/expr/SYMBOL[text()='`%ééé%`']"),
-          to = "UTF-8")
+      to = "UTF-8"
+    )
   )
   expect_equal(length(op), 1)
 })
 
 test_that("data frame input", {
-
   p <- parse(text = "1 + 1", keep.source = TRUE)
 
   pd <- getParseData(p)
@@ -126,7 +125,8 @@ test_that("includeText=FALSE works", {
   # correctly and the resulting xml text should not contain text
   # elements.
   xml <- xml_parse_data(parse(text = "x <- 1", keep.source = TRUE),
-    includeText = FALSE)
+    includeText = FALSE
+  )
   expect_true(is.character(xml))
   expect_true(length(xml) == 1)
   expect_silent(x <- xml2::read_xml(xml))
