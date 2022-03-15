@@ -1,6 +1,4 @@
 
-context("xmlparsedata")
-
 test_that("empty input", {
   xml <- xml_parse_data(parse(text = "", keep.source = TRUE))
   expect_true(is.character(xml))
@@ -102,7 +100,7 @@ test_that("Control-C character", {
           "
   xml <- xml_parse_data(parse(text = src, keep.source = TRUE))
   x <- xml2::read_xml(xml)
-  expect_is(x, "xml_document")
+  expect_s3_class(x, "xml_document")
 })
 
 
