@@ -146,12 +146,12 @@ test_that("narrow octal strings are parsed correctly", {
   expect_match(xml_parse_data(parse(text = '"\\1"', keep.source = TRUE)), '"\\1"', fixed = TRUE)
 
   # multiple literals
-  expect_match(xml_parse_data(parse(text = "'\\1'\n'\\2'")), "'[\\]1'.*'[\\]2'")
+  expect_match(xml_parse_data(parse(text = "'\\1'\n'\\2'", keep.source = TRUE)), "'[\\]1'.*'[\\]2'")
   # multiple escapes
-  expect_match(xml_parse_data(parse(text = "'\\1\\2'")), "'\\1\\2'", fixed = TRUE)
+  expect_match(xml_parse_data(parse(text = "'\\1\\2'", keep.source = TRUE)), "'\\1\\2'", fixed = TRUE)
   # multi-line strings
-  expect_match(xml_parse_data(parse(text = "'\n\\1\n'")), "'\n\\1\n'", fixed = TRUE)
-  expect_match(xml_parse_data(parse(text = "a <- '\\1\n\\2'")), "'\\1\n\\2'", fixed = TRUE)
+  expect_match(xml_parse_data(parse(text = "'\n\\1\n'", keep.source = TRUE)), "'\n\\1\n'", fixed = TRUE)
+  expect_match(xml_parse_data(parse(text = "a <- '\\1\n\\2'", keep.source = TRUE)), "'\\1\n\\2'", fixed = TRUE)
   # mixed-length strings
-  expect_match(xml_parse_data(parse(text = "foo('\\1',\n  '\n\\2\n')")), "'[\\]1'.*'\n[\\]2\n'")
+  expect_match(xml_parse_data(parse(text = "foo('\\1',\n  '\n\\2\n')", keep.source = TRUE)), "'[\\]1'.*'\n[\\]2\n'")
 })
