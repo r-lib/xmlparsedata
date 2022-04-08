@@ -1,6 +1,9 @@
 
 # xmlparsedata Development version
 
+* Re-parse character literals with octal-escaped expressions of width 1 or 2,
+  e.g. `"\1"`, to work around a bug in `utils::getParseData()` (#25, @michaelchirico)
+
 # xmlparsedata 1.0.5
 
 * Translate `\` in lambda expression to `OP-LAMBDA` (#18 @renkun-ken).
