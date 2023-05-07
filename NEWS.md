@@ -1,6 +1,9 @@
 
 # xmlparsedata Development version
 
+* Re-parse character literals with octal-escaped expressions of width 1 or 2,
+  e.g. `"\1"`, to work around a bug in `utils::getParseData()` (#25, @michaelchirico)
+
 * New `expr_as_xml()` to get an XML representation of R expressions (#27 @MichaelChirico).
 
 # xmlparsedata 1.0.5

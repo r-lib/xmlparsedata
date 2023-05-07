@@ -140,3 +140,18 @@ test_that("lambda operator works", {
   expect_silent(x <- xml2::read_xml(xml))
   expect_true(length(xml2::xml_find_all(x, "//OP-LAMBDA")) == 1)
 })
+
+test_that("narrow octal strings are parsed correctly", {
+  expect_match(xml_parse_data(parse(text = "'\\1'", keep.source = TRUE)), "'\\1'", fixed = TRUE)
+  expect_match(xml_parse_data(parse(text = '"\\1"', keep.source = TRUE)), '"\\1"', fixed = TRUE)
+
+  # multiple literals
+  expect_match(xml_parse_data(parse(text = "'\\1'\n'\\2'", keep.source = TRUE)), "'[\\]1'.*'[\\]2'")
+  # multiple escapes
+  expect_match(xml_parse_data(parse(text = "'\\1\\2'", keep.source = TRUE)), "'\\1\\2'", fixed = TRUE)
+  # multi-line strings
+  expect_match(xml_parse_data(parse(text = "'\n\\1\n'", keep.source = TRUE)), "'\n\\1\n'", fixed = TRUE)
+  expect_match(xml_parse_data(parse(text = "a <- '\\1\n\\2'", keep.source = TRUE)), "'\\1\n\\2'", fixed = TRUE)
+  # mixed-length strings
+  expect_match(xml_parse_data(parse(text = "foo('\\1',\n  '\n\\2\n')", keep.source = TRUE)), "'[\\]1'.*'\n[\\]2\n'")
+})
