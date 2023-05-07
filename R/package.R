@@ -95,18 +95,26 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   pd$start <- pd$line1 * maxcol + pd$col1
   pd$end <- pd$line2 * maxcol + pd$col2
 
-  pd$tag <- paste0(
-    "<", pd$token,
-    " line1=\"", pd$line1,
-    "\" col1=\"", pd$col1,
-    "\" line2=\"", pd$line2,
-    "\" col2=\"", pd$col2,
-    "\" start=\"", pd$start,
-    "\" end=\"", pd$end,
-    "\">",
-    if (!is.null(pd$text)) xml_encode(pd$text) else "",
-    ifelse(pd$terminal, paste0("</", pd$token, ">"), "")
-  )
+  if (anyNA(pd$line1)) {
+    pd$tag <- paste0(
+      "<", pd$token, ">",
+      if (!is.null(pd$text)) xml_encode(pd$text) else "",
+      ifelse(pd$terminal, paste0("</", pd$token, ">"), "")
+    )
+  } else {
+    pd$tag <- paste0(
+      "<", pd$token,
+      " line1=\"", pd$line1,
+      "\" col1=\"", pd$col1,
+      "\" line2=\"", pd$line2,
+      "\" col2=\"", pd$col2,
+      "\" start=\"", pd$start,
+      "\" end=\"", pd$end,
+      "\">",
+      if (!is.null(pd$text)) xml_encode(pd$text) else "",
+      ifelse(pd$terminal, paste0("</", pd$token, ">"), "")
+    )
+  }
 
   ## Add an extra terminal tag for each non-terminal one
   pd2 <- pd[!pd$terminal, ]
