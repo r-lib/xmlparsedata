@@ -17,4 +17,14 @@ Useful links:
 }
 
 }
+\author{
+\strong{Maintainer}: Gábor Csárdi \email{csardi.gabor@gmail.com}
+
+Other contributors:
+\itemize{
+  \item RStudio [copyright holder, funder]
+  \item Mango Solutions [copyright holder, funder]
+}
+
+}
 \keyword{internal}

@@ -1,6 +1,8 @@
 
 # xmlparsedata Development version
 
+* New `expr_as_xml()` to get an XML representation of R expressions (#27 @MichaelChirico).
+
 # xmlparsedata 1.0.5
 
 * Translate `\` in lambda expression to `OP-LAMBDA` (#18 @renkun-ken).
