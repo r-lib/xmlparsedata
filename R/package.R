@@ -66,6 +66,15 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
     pd <- x
   } else {
     pd <- getParseData(x, includeText = includeText)
+    if (is.null(pd)) {
+      tmp_source <- tempfile()
+      on.exit(unlink(tmp_source))
+      dput(x, file = tmp_source)
+
+      x <- parse(tmp_source, keep.source = TRUE)
+      pd <- getParseData(x, includeText = includeText)
+      pd$line1 <- pd$line2 <- pd$col1 <- pd$col2 <- NA_integer_
+    }
   }
 
   if (!nrow(pd)) {
