@@ -132,7 +132,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
     str <- !pd$terminal
     end <- pd$parent == -1
     ind <- 2L + cumsum(str * 2L + end * (-2L)) - str * 2L
-    xml <- paste0(spaces(ind), pd$tag, collapse = "\n")
+    xml <- paste0(strrep(" ", ind), pd$tag, collapse = "\n")
   } else {
     xml <- paste(pd$tag, collapse = "\n")
   }

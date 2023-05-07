@@ -1,8 +1,4 @@
 
-spaces_const <- sapply(1:41 - 1, function(x) paste(rep(" ", x), collapse = ""))
-
-spaces <- function(x) spaces_const[pmin(x, 40) + 1]
-
 reparse_octal <- function(pd, lines) {
   out <- character(nrow(pd))
   single_line <- pd$line1 == pd$line2
