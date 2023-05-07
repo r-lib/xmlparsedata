@@ -7,7 +7,7 @@
 expr_as_xml(expr)
 }
 \arguments{
-\item{An}{expression.}
+\item{expr}{An expression.}
 }
 \description{
 Get an XML representation of an expression

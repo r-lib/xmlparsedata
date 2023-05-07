@@ -1,6 +1,6 @@
 #' Get an XML representation of an expression
 #'
-#' @param An expression.
+#' @param expr An expression.
 #' @export
 expr_as_xml <- function(expr) {
   if (!requireNamespace("xml2", quietly = TRUE)) {
