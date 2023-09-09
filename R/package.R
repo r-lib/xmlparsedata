@@ -83,13 +83,15 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
 
   pd <- fix_comments(pd)
 
-  # workaround for R parser bug #18323; see #25
-  str_const_mismatch <- pd$token == "STR_CONST" &
-    pd$col2 - pd$col1 != nchar(pd$text) - 1L &
-    # skip if there are tabs, which would require complicating the logic a lot
-    !grepl("\t", pd$text, fixed = TRUE)
-  if (!is.data.frame(x) && any(str_const_mismatch)) {
-    pd$text[str_const_mismatch] <- reparse_octal(pd[str_const_mismatch, ], attr(x, "srcfile")$lines)
+  if (!is.data.frame(x)) {
+    # workaround for R parser bug #18323; see #25
+    str_const_mismatch <- pd$token == "STR_CONST" &
+      pd$col2 - pd$col1 != nchar(pd$text) - 1L &
+      # skip if there are tabs, which would require complicating the logic a lot
+      !grepl("\t", pd$text, fixed = TRUE)
+    if (any(str_const_mismatch)) {
+      pd$text[str_const_mismatch] <- reparse_octal(pd[str_const_mismatch, ], attr(x, "srcfile")$lines)
+    }
   }
 
   if (!is.null(pd$text)) {
