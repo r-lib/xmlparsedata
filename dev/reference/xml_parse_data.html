@@ -96,7 +96,11 @@ mapping.</p>
 expressions, each expression is an <code>&lt;expr&gt;</code> tag. Each tag
 has attributes that define the location: <code>line1</code>, <code>col1</code>,
 <code>line2</code>, <code>col2</code>. These are from the <code><a href="https://rdrr.io/r/utils/getParseData.html" class="external-link">getParseData()</a></code>
-data frame column names.</p>
+data frame column names. Next, there are two attributes,
+<code>start</code> and <code>end</code>, which can be used as an ordering of
+expressions in the document. Note that while the values
+are correlated with (and in some cases may match exactly)
+positions in the document, this cannot be relied upon.</p>
 <p>See an example below. See also the README at
 <a href="https://github.com/r-lib/xmlparsedata#readme" class="external-link">https://github.com/r-lib/xmlparsedata#readme</a>
 for examples on how to search the XML tree with the <code>xml2</code> package
