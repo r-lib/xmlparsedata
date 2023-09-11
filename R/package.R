@@ -25,7 +25,11 @@ NULL
 #' expressions, each expression is an `<expr>` tag. Each tag
 #' has attributes that define the location: `line1`, `col1`,
 #' `line2`, `col2`. These are from the [getParseData()]
-#' data frame column names.
+#' data frame column names. Next, there are two attributes,
+#' `start` and `end`, which can be used as an ordering of
+#' expressions in the document. Note that while the values
+#' are correlated with (and in some cases may match exactly)
+#' positions in the document, this cannot be relied upon.
 #'
 #' See an example below. See also the README at
 #' <https://github.com/r-lib/xmlparsedata#readme>

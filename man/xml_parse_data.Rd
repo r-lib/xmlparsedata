@@ -39,7 +39,11 @@ The top XML tag is \verb{<exprlist>}, which is a list of
 expressions, each expression is an \verb{<expr>} tag. Each tag
 has attributes that define the location: \code{line1}, \code{col1},
 \code{line2}, \code{col2}. These are from the \code{\link[=getParseData]{getParseData()}}
-data frame column names.
+data frame column names. Next, there are two attributes,
+\code{start} and \code{end}, which can be used as an ordering of
+expressions in the document. Note that while the values
+are correlated with (and in some cases may match exactly)
+positions in the document, this cannot be relied upon.
 
 See an example below. See also the README at
 \url{https://github.com/r-lib/xmlparsedata#readme}
