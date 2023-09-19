@@ -117,8 +117,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
       ifelse(pd$terminal, paste0("</", pd$token, ">"), "")
     )
   } else {
-    pd$tag <-
-    tag <- paste0(
+    pd$tag <- paste0(
       "<", pd$token,
       " line1=\"", pd$line1,
       "\" col1=\"", pd$col1,
@@ -127,9 +126,9 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
       "\" start=\"", pd$start,
       "\" end=\"", pd$end,
       "\">",
-      if (!is.null(pd$text)) xml_encode(pd$text) else ""
+      if (!is.null(pd$text)) xml_encode(pd$text) else "",
+      ifelse(pd$terminal, paste0("</", pd$token, ">"), "")
     )
-    tag[pd$terminal] <- paste0("</", pd$token[pd$terminal], ">")
   }
 
   ## Add an extra terminal tag for each non-terminal one
