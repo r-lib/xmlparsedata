@@ -171,8 +171,9 @@ fix_comments <- function(pd) {
 }
 
 map_token <- function(token) {
-  map <- xml_parse_token_map[token]
-  ifelse(is.na(map), token, map)
+  needs_translation <- token %in% names(xml_parse_token_map)
+  token[needs_translation] <- xml_parse_token_map[token[needs_translation]]
+  token
 }
 
 #' Map token names of the R parser to token names in
