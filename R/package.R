@@ -141,7 +141,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
     pd2$line2 <- pd2$line2 - 1L
     pd2$col2 <- pd2$col2 - 1L
     pd2$tag <- paste0("</", pd2$token, ">")
-    pd <- rbind(pd, pd2)
+    pd <- rbind(pd, pd2, make.row.names = FALSE)
   }
 
   ## Order the nodes properly
