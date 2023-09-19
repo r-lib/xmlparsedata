@@ -110,11 +110,13 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   pd$start <- pd$line1 * maxcol + pd$col1
   pd$end <- pd$line2 * maxcol + pd$col2
 
+  terminal_tag <- character(nrow(pd))
+  terminal_tag[pd$terminal] <- paste0("</", pd$token[pd$terminal], ">")
   if (anyNA(pd$line1)) {
     pd$tag <- paste0(
       "<", pd$token, ">",
       if (!is.null(pd$text)) xml_encode(pd$text) else "",
-      ifelse(pd$terminal, paste0("</", pd$token, ">"), "")
+      terminal_tag
     )
   } else {
     pd$tag <- paste0(
@@ -127,7 +129,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
       "\" end=\"", pd$end,
       "\">",
       if (!is.null(pd$text)) xml_encode(pd$text) else "",
-      ifelse(pd$terminal, paste0("</", pd$token, ">"), "")
+      terminal_tag
     )
   }
 
