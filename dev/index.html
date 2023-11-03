@@ -94,8 +94,12 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
+<p>Stable version:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"xmlparsedata"</span><span class="op">)</span></span></code></pre></div>
+<p>Development version:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"r-lib/zip"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -111,95 +115,95 @@
 <code>utils::getParseData()</code><a class="anchor" aria-label="anchor" href="#utilsgetparsedata"></a>
 </h3>
 <p><code><a href="https://rdrr.io/r/utils/getParseData.html" class="external-link">utils::getParseData()</a></code> summarizes the parse information in a data frame. The data frame has one row per expression tree node, and each node points to its parent. Here is a small example:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span></span>
 <span>  text <span class="op">=</span> <span class="st">"function(a = 1, b = 2) { \n  a + b\n}\n"</span>,</span>
 <span>  keep.source <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/getParseData.html" class="external-link">getParseData</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    line1 col1 line2 col2 id parent          token terminal     text</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33     1    1     3    1 33      0           expr    FALSE         </span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1    1     1    8  1     33       FUNCTION     TRUE function</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1    9     1    9  2     33            '('     TRUE        (</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      1   10     1   10  3     33 SYMBOL_FORMALS     TRUE        a</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      1   12     1   12  4     33     EQ_FORMALS     TRUE        =</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      1   14     1   14  5      6      NUM_CONST     TRUE        1</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      1   14     1   14  6     33           expr    FALSE         </span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      1   15     1   15  7     33            ','     TRUE        ,</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10     1   17     1   17 10     33 SYMBOL_FORMALS     TRUE        b</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     1   19     1   19 11     33     EQ_FORMALS     TRUE        =</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     1   21     1   21 12     13      NUM_CONST     TRUE        2</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13     1   21     1   21 13     33           expr    FALSE         </span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     1   22     1   22 14     33            ')'     TRUE        )</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30     1   24     3    1 30     33           expr    FALSE         </span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17     1   24     1   24 17     30            '{'     TRUE        {</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25     2    3     2    7 25     30           expr    FALSE         </span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19     2    3     2    3 19     21         SYMBOL     TRUE        a</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21     2    3     2    3 21     25           expr    FALSE         </span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20     2    5     2    5 20     25            '+'     TRUE        +</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22     2    7     2    7 22     24         SYMBOL     TRUE        b</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24     2    7     2    7 24     25           expr    FALSE         </span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28     3    1     3    1 28     30            '}'     TRUE        }</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    line1 col1 line2 col2 id parent          token terminal     text</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 33     1    1     3    1 33      0           expr    FALSE         </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      1    1     1    8  1     33       FUNCTION     TRUE function</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1    9     1    9  2     33            '('     TRUE        (</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      1   10     1   10  3     33 SYMBOL_FORMALS     TRUE        a</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      1   12     1   12  4     33     EQ_FORMALS     TRUE        =</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      1   14     1   14  5      6      NUM_CONST     TRUE        1</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      1   14     1   14  6     33           expr    FALSE         </span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      1   15     1   15  7     33            ','     TRUE        ,</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10     1   17     1   17 10     33 SYMBOL_FORMALS     TRUE        b</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11     1   19     1   19 11     33     EQ_FORMALS     TRUE        =</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12     1   21     1   21 12     13      NUM_CONST     TRUE        2</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13     1   21     1   21 13     33           expr    FALSE         </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     1   22     1   22 14     33            ')'     TRUE        )</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30     1   24     3    1 30     33           expr    FALSE         </span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17     1   24     1   24 17     30            '{'     TRUE        {</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25     2    3     2    7 25     30           expr    FALSE         </span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19     2    3     2    3 19     21         SYMBOL     TRUE        a</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21     2    3     2    3 21     25           expr    FALSE         </span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20     2    5     2    5 20     25            '+'     TRUE        +</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22     2    7     2    7 22     24         SYMBOL     TRUE        b</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24     2    7     2    7 24     25           expr    FALSE         </span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28     3    1     3    1 28     30            '}'     TRUE        }</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="xml_parse_data">
 <code>xml_parse_data()</code><a class="anchor" aria-label="anchor" href="#xml_parse_data"></a>
 </h3>
 <p><code><a href="reference/xml_parse_data.html">xmlparsedata::xml_parse_data()</a></code> converts the parse information to an XML document. It works similarly to <code><a href="https://rdrr.io/r/utils/getParseData.html" class="external-link">getParseData()</a></code>. Specify the <code>pretty = TRUE</code> option to pretty-indent the XML output. Note that this has a small overhead, so if you are parsing large files, I suggest you omit it.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-lib/xmlparsedata#readme" class="external-link">xmlparsedata</a></span><span class="op">)</span></span>
 <span><span class="va">xml</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/xml_parse_data.html">xml_parse_data</a></span><span class="op">(</span><span class="va">p</span>, pretty <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">xml</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;exprlist&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;expr line1="1" col1="1" line2="3" col2="1" start="26" end="76"&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;FUNCTION line1="1" col1="1" line2="1" col2="8" start="26" end="33"&gt;function&lt;/FUNCTION&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;OP-LEFT-PAREN line1="1" col1="9" line2="1" col2="9" start="34" end="34"&gt;(&lt;/OP-LEFT-PAREN&gt;</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;SYMBOL_FORMALS line1="1" col1="10" line2="1" col2="10" start="35" end="35"&gt;a&lt;/SYMBOL_FORMALS&gt;</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;EQ_FORMALS line1="1" col1="12" line2="1" col2="12" start="37" end="37"&gt;=&lt;/EQ_FORMALS&gt;</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="14" line2="1" col2="14" start="39" end="39"&gt;</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;NUM_CONST line1="1" col1="14" line2="1" col2="14" start="39" end="39"&gt;1&lt;/NUM_CONST&gt;</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;OP-COMMA line1="1" col1="15" line2="1" col2="15" start="40" end="40"&gt;,&lt;/OP-COMMA&gt;</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;SYMBOL_FORMALS line1="1" col1="17" line2="1" col2="17" start="42" end="42"&gt;b&lt;/SYMBOL_FORMALS&gt;</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;EQ_FORMALS line1="1" col1="19" line2="1" col2="19" start="44" end="44"&gt;=&lt;/EQ_FORMALS&gt;</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="21" line2="1" col2="21" start="46" end="46"&gt;</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;NUM_CONST line1="1" col1="21" line2="1" col2="21" start="46" end="46"&gt;2&lt;/NUM_CONST&gt;</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;OP-RIGHT-PAREN line1="1" col1="22" line2="1" col2="22" start="47" end="47"&gt;)&lt;/OP-RIGHT-PAREN&gt;</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="24" line2="3" col2="1" start="49" end="76"&gt;</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;OP-LEFT-BRACE line1="1" col1="24" line2="1" col2="24" start="49" end="49"&gt;{&lt;/OP-LEFT-BRACE&gt;</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;expr line1="2" col1="3" line2="2" col2="7" start="53" end="57"&gt;</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;expr line1="2" col1="3" line2="2" col2="3" start="53" end="53"&gt;</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           &lt;SYMBOL line1="2" col1="3" line2="2" col2="3" start="53" end="53"&gt;a&lt;/SYMBOL&gt;</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;/expr&gt;</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;OP-PLUS line1="2" col1="5" line2="2" col2="5" start="55" end="55"&gt;+&lt;/OP-PLUS&gt;</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;expr line1="2" col1="7" line2="2" col2="7" start="57" end="57"&gt;</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           &lt;SYMBOL line1="2" col1="7" line2="2" col2="7" start="57" end="57"&gt;b&lt;/SYMBOL&gt;</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;/expr&gt;</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;/expr&gt;</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;OP-RIGHT-BRACE line1="3" col1="1" line2="3" col2="1" start="76" end="76"&gt;}&lt;/OP-RIGHT-BRACE&gt;</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;/expr&gt;</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;/exprlist&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;exprlist&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;expr line1="1" col1="1" line2="3" col2="1" start="26" end="76"&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;FUNCTION line1="1" col1="1" line2="1" col2="8" start="26" end="33"&gt;function&lt;/FUNCTION&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;OP-LEFT-PAREN line1="1" col1="9" line2="1" col2="9" start="34" end="34"&gt;(&lt;/OP-LEFT-PAREN&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;SYMBOL_FORMALS line1="1" col1="10" line2="1" col2="10" start="35" end="35"&gt;a&lt;/SYMBOL_FORMALS&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;EQ_FORMALS line1="1" col1="12" line2="1" col2="12" start="37" end="37"&gt;=&lt;/EQ_FORMALS&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="14" line2="1" col2="14" start="39" end="39"&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;NUM_CONST line1="1" col1="14" line2="1" col2="14" start="39" end="39"&gt;1&lt;/NUM_CONST&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;OP-COMMA line1="1" col1="15" line2="1" col2="15" start="40" end="40"&gt;,&lt;/OP-COMMA&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;SYMBOL_FORMALS line1="1" col1="17" line2="1" col2="17" start="42" end="42"&gt;b&lt;/SYMBOL_FORMALS&gt;</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;EQ_FORMALS line1="1" col1="19" line2="1" col2="19" start="44" end="44"&gt;=&lt;/EQ_FORMALS&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="21" line2="1" col2="21" start="46" end="46"&gt;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;NUM_CONST line1="1" col1="21" line2="1" col2="21" start="46" end="46"&gt;2&lt;/NUM_CONST&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;OP-RIGHT-PAREN line1="1" col1="22" line2="1" col2="22" start="47" end="47"&gt;)&lt;/OP-RIGHT-PAREN&gt;</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="24" line2="3" col2="1" start="49" end="76"&gt;</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;OP-LEFT-BRACE line1="1" col1="24" line2="1" col2="24" start="49" end="49"&gt;{&lt;/OP-LEFT-BRACE&gt;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;expr line1="2" col1="3" line2="2" col2="7" start="53" end="57"&gt;</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;expr line1="2" col1="3" line2="2" col2="3" start="53" end="53"&gt;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           &lt;SYMBOL line1="2" col1="3" line2="2" col2="3" start="53" end="53"&gt;a&lt;/SYMBOL&gt;</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;/expr&gt;</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;OP-PLUS line1="2" col1="5" line2="2" col2="5" start="55" end="55"&gt;+&lt;/OP-PLUS&gt;</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;expr line1="2" col1="7" line2="2" col2="7" start="57" end="57"&gt;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           &lt;SYMBOL line1="2" col1="7" line2="2" col2="7" start="57" end="57"&gt;b&lt;/SYMBOL&gt;</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;/expr&gt;</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;/expr&gt;</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;OP-RIGHT-BRACE line1="3" col1="1" line2="3" col2="1" start="76" end="76"&gt;}&lt;/OP-RIGHT-BRACE&gt;</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;/expr&gt;</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;/exprlist&gt;</span></span></code></pre></div>
 <p>The top XML tag is <code>&lt;exprlist&gt;</code>, which is a list of expressions, each expression is an <code>&lt;expr&gt;</code> tag. Each tag has attributes that define the location: <code>line1</code>, <code>col1</code>, <code>line2</code>, <code>col2</code>. These are from the <code><a href="https://rdrr.io/r/utils/getParseData.html" class="external-link">getParseData()</a></code> data frame column names.</p>
 </div>
 <div class="section level3">
 <h3 id="renaming-some-tokens">Renaming some tokens<a class="anchor" aria-label="anchor" href="#renaming-some-tokens"></a>
 </h3>
 <p>The R parser’s token names are preserved in the XML as much as possible, but some of them are not valid XML tag names, so they are renamed, see the <code>xml_parse_token_map</code> vector for the mapping:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xml_parse_token_map</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                '?'                '~'                '+'                '-' </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      "OP-QUESTION"         "OP-TILDE"          "OP-PLUS"         "OP-MINUS" </span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                '*'                '/'                ':'                '^' </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          "OP-STAR"         "OP-SLASH"         "OP-COLON"         "OP-CARET" </span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                '$'                '@'                '('                '[' </span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        "OP-DOLLAR"            "OP-AT"    "OP-LEFT-PAREN"  "OP-LEFT-BRACKET" </span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                ';'                '{'                '}'                ')' </span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     "OP-SEMICOLON"    "OP-LEFT-BRACE"   "OP-RIGHT-BRACE"   "OP-RIGHT-PAREN" </span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                '!'                ']'                ','             '\\\\' </span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "OP-EXCLAMATION" "OP-RIGHT-BRACKET"         "OP-COMMA"        "OP-LAMBDA"</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                '?'                '~'                '+'                '-' </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      "OP-QUESTION"         "OP-TILDE"          "OP-PLUS"         "OP-MINUS" </span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                '*'                '/'                ':'                '^' </span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          "OP-STAR"         "OP-SLASH"         "OP-COLON"         "OP-CARET" </span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                '$'                '@'                '('                '[' </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        "OP-DOLLAR"            "OP-AT"    "OP-LEFT-PAREN"  "OP-LEFT-BRACKET" </span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                ';'                '{'                '}'                ')' </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     "OP-SEMICOLON"    "OP-LEFT-BRACE"   "OP-RIGHT-BRACE"   "OP-RIGHT-PAREN" </span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                '!'                ']'                ','             '\\\\' </span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   "OP-EXCLAMATION" "OP-RIGHT-BRACKET"         "OP-COMMA"        "OP-LAMBDA"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="search-the-parse-tree-with-xml2">Search the parse tree with <code>xml2</code>
@@ -208,7 +212,7 @@
 <p>The <code>xml2</code> package can search XML documents using <a href="https://en.wikipedia.org/wiki/XPath" class="external-link">XPath</a> expressions. This is often useful to search for specific code patterns.</p>
 <p>As an example we search a source file from base R for <code>1:nrow(&lt;expr&gt;)</code> expressions, which are usually unsafe, as <code><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow()</a></code> might be zero, and then the expression is equivalent to <code>1:0</code>, i.e. <code>c(1, 0)</code>, which is usually not the intended behavior.</p>
 <p>We load and parse the file directly from the the R source code mirror at <a href="https://github.com/wch/r-source" class="external-link uri">https://github.com/wch/r-source</a>:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
 <span>  <span class="st">"https://raw.githubusercontent.com/wch/r-source/"</span>,</span>
 <span>  <span class="st">"4fc93819fc7401b8695ce57a948fe163d4188f47/src/library/tools/R/xgettext.R"</span></span>
@@ -216,47 +220,47 @@
 <span><span class="va">src</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="va">src</span>, keep.source <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>and we convert it to an XML tree:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://xml2.r-lib.org/" class="external-link">xml2</a></span><span class="op">)</span></span>
 <span><span class="va">xml</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html" class="external-link">read_xml</a></span><span class="op">(</span><span class="fu"><a href="reference/xml_parse_data.html">xml_parse_data</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>1:nrow(&lt;expr&gt;)</code> expression corresponds to the following tree in R:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>expr<span class="sc">&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">+--</span> <span class="er">&lt;</span>expr<span class="sc">&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> NUM_CONST<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">+--</span> <span class="st">':'</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">+--</span> <span class="er">&lt;</span>expr<span class="sc">&gt;</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> <span class="er">&lt;</span>expr<span class="sc">&gt;</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">+--</span> SYMBOL_FUNCTION_CALL nrow</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> <span class="st">'('</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> <span class="er">&lt;</span>expr<span class="sc">&gt;</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> <span class="st">')'</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>expr<span class="sc">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">+--</span> <span class="er">&lt;</span>expr<span class="sc">&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> NUM_CONST<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="sc">+--</span> <span class="st">':'</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">+--</span> <span class="er">&lt;</span>expr<span class="sc">&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> <span class="er">&lt;</span>expr<span class="sc">&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      <span class="sc">+--</span> SYMBOL_FUNCTION_CALL nrow</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> <span class="st">'('</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> <span class="er">&lt;</span>expr<span class="sc">&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="sc">+--</span> <span class="st">')'</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bad</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/xml_parse_data.html">xml_parse_data</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/parse.html" class="external-link">parse</a></span><span class="op">(</span>text <span class="op">=</span> <span class="st">"1:nrow(expr)"</span>, keep.source <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>  pretty <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">bad</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;exprlist&gt;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;expr line1="1" col1="1" line2="1" col2="12" start="14" end="25"&gt;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="1" line2="1" col2="1" start="14" end="14"&gt;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;NUM_CONST line1="1" col1="1" line2="1" col2="1" start="14" end="14"&gt;1&lt;/NUM_CONST&gt;</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;OP-COLON line1="1" col1="2" line2="1" col2="2" start="15" end="15"&gt;:&lt;/OP-COLON&gt;</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="3" line2="1" col2="12" start="16" end="25"&gt;</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;expr line1="1" col1="3" line2="1" col2="6" start="16" end="19"&gt;</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;SYMBOL_FUNCTION_CALL line1="1" col1="3" line2="1" col2="6" start="16" end="19"&gt;nrow&lt;/SYMBOL_FUNCTION_CALL&gt;</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;/expr&gt;</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;OP-LEFT-PAREN line1="1" col1="7" line2="1" col2="7" start="20" end="20"&gt;(&lt;/OP-LEFT-PAREN&gt;</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;expr line1="1" col1="8" line2="1" col2="11" start="21" end="24"&gt;</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;SYMBOL line1="1" col1="8" line2="1" col2="11" start="21" end="24"&gt;expr&lt;/SYMBOL&gt;</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;/expr&gt;</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;OP-RIGHT-PAREN line1="1" col1="12" line2="1" col2="12" start="25" end="25"&gt;)&lt;/OP-RIGHT-PAREN&gt;</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;/expr&gt;</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;/exprlist&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;exprlist&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;expr line1="1" col1="1" line2="1" col2="12" start="14" end="25"&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="1" line2="1" col2="1" start="14" end="14"&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;NUM_CONST line1="1" col1="1" line2="1" col2="1" start="14" end="14"&gt;1&lt;/NUM_CONST&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;OP-COLON line1="1" col1="2" line2="1" col2="2" start="15" end="15"&gt;:&lt;/OP-COLON&gt;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;expr line1="1" col1="3" line2="1" col2="12" start="16" end="25"&gt;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;expr line1="1" col1="3" line2="1" col2="6" start="16" end="19"&gt;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;SYMBOL_FUNCTION_CALL line1="1" col1="3" line2="1" col2="6" start="16" end="19"&gt;nrow&lt;/SYMBOL_FUNCTION_CALL&gt;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;/expr&gt;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;OP-LEFT-PAREN line1="1" col1="7" line2="1" col2="7" start="20" end="20"&gt;(&lt;/OP-LEFT-PAREN&gt;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;expr line1="1" col1="8" line2="1" col2="11" start="21" end="24"&gt;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         &lt;SYMBOL line1="1" col1="8" line2="1" col2="11" start="21" end="24"&gt;expr&lt;/SYMBOL&gt;</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;/expr&gt;</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &lt;OP-RIGHT-PAREN line1="1" col1="12" line2="1" col2="12" start="25" end="25"&gt;)&lt;/OP-RIGHT-PAREN&gt;</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;/expr&gt;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;/expr&gt;</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;/exprlist&gt;</span></span></code></pre></div>
 <p>This translates to the following XPath expression (ignoring the last tree tokens from the <code>length(expr)</code> expressions):</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">xp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
 <span>  <span class="st">"//expr"</span>,</span>
 <span>     <span class="st">"[expr[NUM_CONST[text()='1']]]"</span>,</span>
@@ -264,20 +268,20 @@
 <span>     <span class="st">"[expr[expr[SYMBOL_FUNCTION_CALL[text()='nrow']]]]"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>We can search for this subtree with <code><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml2::xml_find_all()</a></code>:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bad_nrow</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/xml_find_all.html" class="external-link">xml_find_all</a></span><span class="op">(</span><span class="va">xml</span>, <span class="va">xp</span><span class="op">)</span></span>
 <span><span class="va">bad_nrow</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; {xml_nodeset (1)}</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &lt;expr line1="334" col1="19" line2="334" col2="27" start="38763" end="3877 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; {xml_nodeset (1)}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &lt;expr line1="334" col1="19" line2="334" col2="27" start="38763" end="3877 ...</span></span></code></pre></div>
 <p>There is only one hit, in line 334:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">332</span><span class="op">:</span><span class="fl">336</span>, <span class="va">src</span><span class="op">[</span><span class="fl">332</span><span class="op">:</span><span class="fl">336</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]  [,2]                                           </span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] "332" "\tcat(\"No errors\\n\")"                      </span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] "333" "    else"                                     </span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] "334" "\tfor (i in 1:nrow(x)) {"                     </span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,] "335" "\t    if (is.na(x[i, 2L])) cols &lt;- c(1L, 3:5)"</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,] "336" "\t    else cols &lt;- 1:5"</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      [,1]  [,2]                                           </span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] "332" "\tcat(\"No errors\\n\")"                      </span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] "333" "    else"                                     </span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] "334" "\tfor (i in 1:nrow(x)) {"                     </span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,] "335" "\t    if (is.na(x[i, 2L])) cols &lt;- c(1L, 3:5)"</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,] "336" "\t    else cols &lt;- 1:5"</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -303,9 +307,8 @@
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
-</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 
@@ -329,7 +332,7 @@
 <li>
 <a href="https://github.com/gaborcsardi" class="external-link">Gábor Csárdi</a> <br><small class="roles"> Author, maintainer </small>  </li>
 <li>
-<a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a> <br><small class="roles"> Copyright holder, funder </small>  </li>
+<a href="https://www.posit.co" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" height="16" style="margin-bottom: 3px;"></a> <br><small class="roles"> Copyright holder, funder </small>  </li>
 <li>Mango Solutions <br><small class="roles"> Copyright holder, funder </small>  </li>
 </ul>
 </div>
@@ -340,7 +343,7 @@
 <li><a href="https://github.com/r-lib/xmlparsedata/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/r-lib/xmlparsedata/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://www.r-pkg.org/pkg/xmlparsedata" class="external-link"><img src="https://www.r-pkg.org/badges/version/xmlparsedata"></a></li>
 <li><a href="https://www.r-pkg.org/pkg/xmlparsedata" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/xmlparsedata" alt="CRAN RStudio mirror downloads"></a></li>
-<li><a href="https://app.codecov.io/gh/r-lib/xmlparsedata?branch=main" class="external-link"><img src="https://codecov.io/gh/r-lib/xmlparsedata/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://app.codecov.io/gh/r-lib/zip?branch=main" class="external-link"><img src="https://codecov.io/gh/r-lib/zip/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 
@@ -352,7 +355,7 @@
   <footer><div class="container">
   <div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by <a href="https://github.com/gaborcsardi" class="external-link">Gábor Csárdi</a>, <a href="https://www.rstudio.com" class="external-link"><img src="https://www.tidyverse.org/rstudio-logo.svg" alt="RStudio" width="72"></a>, Mango Solutions.</p>
+<p>Developed by <a href="https://github.com/gaborcsardi" class="external-link">Gábor Csárdi</a>, <a href="https://www.posit.co" class="external-link"><img src="https://www.tidyverse.org/posit-logo.svg" alt="Posit" height="16" style="margin-bottom: 3px;"></a>, Mango Solutions.</p>
 </div>
 
 <div class="pkgdown-footer-right">
