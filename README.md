@@ -30,8 +30,16 @@ searchable and easier to manipulate in general.
 
 ## Installation
 
+Stable version:
+
 ``` r
 install.packages("xmlparsedata")
+```
+
+Development version:
+
+``` r
+pak::pak("r-lib/zip")
 ```
 
 ## Usage
