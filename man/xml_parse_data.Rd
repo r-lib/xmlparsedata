@@ -4,7 +4,7 @@
 \alias{xml_parse_data}
 \title{Convert R parse data to XML}
 \usage{
-xml_parse_data(x, includeText = NA, pretty = FALSE)
+xml_parse_data(x, includeText = NA, pretty = FALSE, attributes = TRUE)
 }
 \arguments{
 \item{x}{
@@ -18,6 +18,8 @@ xml_parse_data(x, includeText = NA, pretty = FALSE)
 
 \item{pretty}{Whether to pretty-indent the XML output. It has a small
 overhead which probably only matters for very large source files.}
+
+\item{attributes}{Whether to include location tag attributes (\code{line1}, \code{col1}, ...)}
 }
 \value{
 An XML string representing the parse data. See details below.

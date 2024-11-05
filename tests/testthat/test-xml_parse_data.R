@@ -155,3 +155,17 @@ test_that("narrow octal strings are parsed correctly", {
   # mixed-length strings
   expect_match(xml_parse_data(parse(text = "foo('\\1',\n  '\n\\2\n')", keep.source = TRUE)), "'[\\]1'.*'\n[\\]2\n'")
 })
+
+test_that("no attributes are added", {
+  xml <- xml_parse_data(parse(text = "# comment\n", keep.source = TRUE), attributes = FALSE)
+  expect_true(is.character(xml))
+  expect_true(length(xml) == 1)
+  expected = paste0(
+    "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>\n",
+    "<exprlist>\n",
+    "<COMMENT># comment</COMMENT>\n",
+    "</exprlist>\n"
+    )
+  expect_identical(xml, expected)
+  expect_silent(x <- xml2::read_xml(xml))
+})
