@@ -8,3 +8,22 @@
 Convert the output of 'utils::getParseData()' to an 'XML' tree, that is
 searchable and easier to manipulate in general.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/r-lib/xmlparsedata#readme}
+  \item \url{https://r-lib.github.io/xmlparsedata/}
+  \item Report bugs at \url{https://github.com/r-lib/xmlparsedata/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Gábor Csárdi \email{csardi.gabor@gmail.com}
+
+Other contributors:
+\itemize{
+  \item Posit Software, PBC [copyright holder, funder]
+  \item Mango Solutions [copyright holder, funder]
+}
+
+}
