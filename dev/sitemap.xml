@@ -1,39 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/reference/expr_as_xml.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/reference/xml_parse_data.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/reference/xml_parse_token_map.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/reference/xmlparsedata-package.html</loc>
-  </url>
-  <url>
-    <loc>https://r-lib.github.io/xmlparsedata/dev/reference/xmlparsedata.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/LICENSE-text.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/LICENSE.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/authors.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/index.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/news/index.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/reference/expr_as_xml.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/reference/index.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/reference/xml_parse_data.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/reference/xml_parse_token_map.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/reference/xmlparsedata-package.html</loc></url>
+<url><loc>https://r-lib.github.io/xmlparsedata/dev/reference/xmlparsedata.html</loc></url>
 </urlset>
+
