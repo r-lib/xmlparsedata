@@ -10,7 +10,7 @@
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/xmlparsedata)](https://www.r-pkg.org/pkg/xmlparsedata)
 [![Codecov test
-coverage](https://codecov.io/gh/r-lib/zip/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/zip?branch=main)
+coverage](https://codecov.io/gh/r-lib/xmlparsedata/graph/badge.svg)](https://app.codecov.io/gh/r-lib/xmlparsedata)
 <!-- badges: end -->
 
 Convert the output of ‘utils::getParseData()’ to an ‘XML’ tree, that is
