@@ -1,4 +1,3 @@
-
 #' Parse Data of R Code as an 'XML' Tree
 #'
 #' Convert the output of 'utils::getParseData()' to an 'XML' tree, that is
@@ -94,7 +93,10 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
       # skip if there are tabs, which would require complicating the logic a lot
       !grepl("\t", pd$text, fixed = TRUE)
     if (any(str_const_mismatch)) {
-      pd$text[str_const_mismatch] <- reparse_octal(pd[str_const_mismatch, ], attr(x, "srcfile")$lines)
+      pd$text[str_const_mismatch] <- reparse_octal(
+        pd[str_const_mismatch, ],
+        attr(x, "srcfile")$lines
+      )
     }
   }
 
@@ -114,19 +116,28 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
   terminal_tag[pd$terminal] <- paste0("</", pd$token[pd$terminal], ">")
   if (anyNA(pd$line1)) {
     pd$tag <- paste0(
-      "<", pd$token, ">",
+      "<",
+      pd$token,
+      ">",
       if (!is.null(pd$text)) xml_encode(pd$text) else "",
       terminal_tag
     )
   } else {
     pd$tag <- paste0(
-      "<", pd$token,
-      " line1=\"", pd$line1,
-      "\" col1=\"", pd$col1,
-      "\" line2=\"", pd$line2,
-      "\" col2=\"", pd$col2,
-      "\" start=\"", pd$start,
-      "\" end=\"", pd$end,
+      "<",
+      pd$token,
+      " line1=\"",
+      pd$line1,
+      "\" col1=\"",
+      pd$col1,
+      "\" line2=\"",
+      pd$line2,
+      "\" col2=\"",
+      pd$col2,
+      "\" start=\"",
+      pd$start,
+      "\" end=\"",
+      pd$end,
       "\">",
       if (!is.null(pd$text)) xml_encode(pd$text) else "",
       terminal_tag

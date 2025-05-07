@@ -2,7 +2,10 @@
 output: github_document
 ---
 
-```{r, setup, echo = FALSE, message = FALSE}
+```{r}
+#| label: setup
+#| echo: false
+#| message: false
 knitr::opts_chunk$set(
   comment = "#>",
   tidy = FALSE,
@@ -39,13 +42,15 @@ searchable and easier to manipulate in general.
 
 Stable version:
 
-```{r eval = FALSE}
+```{r}
+#| eval: false
 install.packages("xmlparsedata")
 ```
 
 Development version:
 
-```{r eval = FALSE}
+```{r}
+#| eval: false
 pak::pak("r-lib/zip")
 ```
 

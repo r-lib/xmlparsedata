@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2023 xmlparsedata authors
+Copyright (c) 2025 xmlparsedata authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

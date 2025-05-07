@@ -1,4 +1,3 @@
-
 test_that("empty input", {
   xml <- xml_parse_data(parse(text = "", keep.source = TRUE))
   expect_true(is.character(xml))
@@ -70,7 +69,8 @@ test_that("UTF-8 is OK", {
 
   op <- xml2::xml_find_all(
     xml2::read_xml(xml),
-    iconv(enc2native("/exprlist/expr/expr/SYMBOL[text()='`%ééé%`']"),
+    iconv(
+      enc2native("/exprlist/expr/expr/SYMBOL[text()='`%ééé%`']"),
       to = "UTF-8"
     )
   )
@@ -122,7 +122,8 @@ test_that("includeText=FALSE works", {
   # without `text` column. xml_parse_data should handle this case
   # correctly and the resulting xml text should not contain text
   # elements.
-  xml <- xml_parse_data(parse(text = "x <- 1", keep.source = TRUE),
+  xml <- xml_parse_data(
+    parse(text = "x <- 1", keep.source = TRUE),
     includeText = FALSE
   )
   expect_true(is.character(xml))
@@ -132,7 +133,9 @@ test_that("includeText=FALSE works", {
 })
 
 test_that("lambda operator works", {
-  testthat::skip_if_not(getRversion() >= "4.1.0" && as.numeric(R.version[["svn rev"]]) >= 79553)
+  testthat::skip_if_not(
+    getRversion() >= "4.1.0" && as.numeric(R.version[["svn rev"]]) >= 79553
+  )
   # r-devel rev 79553 introduces native pipe syntax (|>) and lambda expression (e.g \(x) x + 1).
   xml <- xml_parse_data(parse(text = "\\(x) x + 1", keep.source = TRUE))
   expect_true(is.character(xml))
@@ -142,16 +145,45 @@ test_that("lambda operator works", {
 })
 
 test_that("narrow octal strings are parsed correctly", {
-  expect_match(xml_parse_data(parse(text = "'\\1'", keep.source = TRUE)), "'\\1'", fixed = TRUE)
-  expect_match(xml_parse_data(parse(text = '"\\1"', keep.source = TRUE)), '"\\1"', fixed = TRUE)
+  expect_match(
+    xml_parse_data(parse(text = "'\\1'", keep.source = TRUE)),
+    "'\\1'",
+    fixed = TRUE
+  )
+  expect_match(
+    xml_parse_data(parse(text = '"\\1"', keep.source = TRUE)),
+    '"\\1"',
+    fixed = TRUE
+  )
 
   # multiple literals
-  expect_match(xml_parse_data(parse(text = "'\\1'\n'\\2'", keep.source = TRUE)), "'[\\]1'.*'[\\]2'")
+  expect_match(
+    xml_parse_data(parse(text = "'\\1'\n'\\2'", keep.source = TRUE)),
+    "'[\\]1'.*'[\\]2'"
+  )
   # multiple escapes
-  expect_match(xml_parse_data(parse(text = "'\\1\\2'", keep.source = TRUE)), "'\\1\\2'", fixed = TRUE)
+  expect_match(
+    xml_parse_data(parse(text = "'\\1\\2'", keep.source = TRUE)),
+    "'\\1\\2'",
+    fixed = TRUE
+  )
   # multi-line strings
-  expect_match(xml_parse_data(parse(text = "'\n\\1\n'", keep.source = TRUE)), "'\n\\1\n'", fixed = TRUE)
-  expect_match(xml_parse_data(parse(text = "a <- '\\1\n\\2'", keep.source = TRUE)), "'\\1\n\\2'", fixed = TRUE)
+  expect_match(
+    xml_parse_data(parse(text = "'\n\\1\n'", keep.source = TRUE)),
+    "'\n\\1\n'",
+    fixed = TRUE
+  )
+  expect_match(
+    xml_parse_data(parse(text = "a <- '\\1\n\\2'", keep.source = TRUE)),
+    "'\\1\n\\2'",
+    fixed = TRUE
+  )
   # mixed-length strings
-  expect_match(xml_parse_data(parse(text = "foo('\\1',\n  '\n\\2\n')", keep.source = TRUE)), "'[\\]1'.*'\n[\\]2\n'")
+  expect_match(
+    xml_parse_data(parse(
+      text = "foo('\\1',\n  '\n\\2\n')",
+      keep.source = TRUE
+    )),
+    "'[\\]1'.*'\n[\\]2\n'"
+  )
 })

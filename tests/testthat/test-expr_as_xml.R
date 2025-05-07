@@ -6,7 +6,11 @@ test_that("XML object is returned with correct structure", {
   })
   expect_s3_class(expr_xml, "xml_document")
   expect_identical(
-    vapply(xml2::xml_children(xml2::xml_child(expr_xml)), xml2::xml_name, character(1L)),
+    vapply(
+      xml2::xml_children(xml2::xml_child(expr_xml)),
+      xml2::xml_name,
+      character(1L)
+    ),
     c("expr", "OP-LEFT-BRACKET", "OP-COMMA", "expr", "OP-RIGHT-BRACKET")
   )
 })

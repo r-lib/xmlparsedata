@@ -18,15 +18,15 @@ searchable and easier to manipulate in general.
 
 ------------------------------------------------------------------------
 
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Introduction](#introduction)
-  - [`utils::getParseData()`](#utilsgetparsedata)
-  - [`xml_parse_data()`](#xml_parse_data)
-  - [Renaming some tokens](#renaming-some-tokens)
-  - [Search the parse tree with
-    `xml2`](#search-the-parse-tree-with-xml2)
-- [License](#license)
+-   [Installation](#installation)
+-   [Usage](#usage)
+    -   [Introduction](#introduction)
+    -   [`utils::getParseData()`](#utilsgetparsedata)
+    -   [`xml_parse_data()`](#xml_parse_data)
+    -   [Renaming some tokens](#renaming-some-tokens)
+    -   [Search the parse tree with
+        `xml2`](#search-the-parse-tree-with-xml2)
+-   [License](#license)
 
 ## Installation
 
