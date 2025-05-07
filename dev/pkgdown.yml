@@ -1,8 +1,8 @@
 pandoc: 3.1.11
-pkgdown: 2.1.1
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-11-09T13:59Z
+last_built: 2025-05-07T16:13Z
 urls:
   reference: https://r-lib.github.io/xmlparsedata/reference
   article: https://r-lib.github.io/xmlparsedata/articles
