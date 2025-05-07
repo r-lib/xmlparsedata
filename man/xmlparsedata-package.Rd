@@ -3,7 +3,6 @@
 \docType{package}
 \name{xmlparsedata-package}
 \alias{xmlparsedata-package}
-\alias{_PACKAGE}
 \title{xmlparsedata: Parse Data of 'R' Code as an 'XML' Tree}
 \description{
 Convert the output of 'utils::getParseData()' to an 'XML' tree, that one can search via 'XPath', and easier to manipulate in general.

@@ -41,6 +41,7 @@ NULL
 #'
 #' @param pretty Whether to pretty-indent the XML output. It has a small
 #'   overhead which probably only matters for very large source files.
+#' @param attributes Whether to include location tag attributes (`line1`, `col1`, ...)
 #' @inheritParams utils::getParseData
 #' @return An XML string representing the parse data. See details below.
 #'
@@ -57,7 +58,7 @@ NULL
 #' getParseData(expr)
 #'
 #' cat(xml_parse_data(expr, pretty = TRUE))
-xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
+xml_parse_data <- function(x, includeText = NA, pretty = FALSE, attributes = TRUE) {
   xml_header <- paste0(
     "<?xml version=\"1.0\" encoding=\"UTF-8\" ",
     "standalone=\"yes\" ?>\n<exprlist>\n"
@@ -114,7 +115,7 @@ xml_parse_data <- function(x, includeText = NA, pretty = FALSE) {
 
   terminal_tag <- character(nrow(pd))
   terminal_tag[pd$terminal] <- paste0("</", pd$token[pd$terminal], ">")
-  if (anyNA(pd$line1)) {
+  if ((!attributes) || anyNA(pd$line1)) {
     pd$tag <- paste0(
       "<",
       pd$token,
